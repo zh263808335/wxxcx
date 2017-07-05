@@ -1,6 +1,5 @@
 package com.czl.shanshan.firstpage.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,8 @@ public class FirstPageService implements IFirstPageService {
 	 */
 	@Override
 	public List<BannerEntity> listBanners(BannerEntity bannerEntity) {
-		return this.firstPageDao.listBanners(bannerEntity);
+		List<BannerEntity> list = this.firstPageDao.listBanners(bannerEntity);
+		return list;
 	}
 
 }

@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.czl.shanshan.firstpage.dao.IFirstPageDao">
-	<
-
-	<select id="listBanners" resultType="java.util.List" 
+	<resultMap id="bannerEntityResult" type="com.czl.shanshan.firstpage.entity.BannerEntity">
+		<result column="id" property="id" jdbcType="INTEGER" />
+		<result column="dateAdd" property="dateAdd" jdbcType="TIMESTAMP" />
+		<result column="businessId" property="businessId" jdbcType="INTEGER" />
+		<result column="linkUrl" property="linkUrl" jdbcType="VARCHAR" />
+		<result column="paixu" property="paixu" jdbcType="INTEGER" />
+		<result column="picUrl" property="picUrl" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="statusStr" property="statusStr" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="userId" property="userId" jdbcType="INTEGER" />
+	</resultMap>
+	<select id="listBanners" resultMap="bannerEntityResult" 
 		parameterType="com.czl.shanshan.firstpage.entity.BannerEntity">
-		SELECT t.id, t.NAME, t.CODE FROM t_shan_banner
+		SELECT t.id, t.dateAdd, t.businessId, t.linkUrl, t.paixu, t.picUrl,
+		t.remark, t.status, t.statusStr, t.title, t.type, t.userId,t.dateAdd
+		FROM t_shan_banner t
 	</select>
 </mapper>
