@@ -1,6 +1,5 @@
 package com.czl.shanshan.firstpage.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
