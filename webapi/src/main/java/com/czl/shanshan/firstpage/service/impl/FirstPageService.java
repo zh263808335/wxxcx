@@ -32,7 +32,8 @@ public class FirstPageService implements IFirstPageService {
 	 */
 	@Override
 	public List<BannerEntity> listBanners(BannerEntity bannerEntity) {
-		return this.firstPageDao.listBanners(bannerEntity);
+		List<BannerEntity> list = this.firstPageDao.listBanners(bannerEntity);
+		return list;
 	}
 
 }
