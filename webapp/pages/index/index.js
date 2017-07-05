@@ -74,11 +74,12 @@ Page({
     */
     wx.request({
       //url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/banner/list',
-      url: app.globalData.server + 'firstPage/listBanner.do',
+      url: 'http://localhost:58305/api/test/get',
       success: function(res) {
-        that.setData({
-          banners: res.data.data
-        });
+        console.log(res);
+        // that.setData({
+        //   banners: res.data.data
+        // });
       }
     })
     wx.request({
