@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.czl.shanshan.firstpage.entity.BannerEntity;
+import com.czl.shanshan.firstpage.entity.GoodsEntity;
 import com.czl.shanshan.firstpage.service.IFirstPageService;
 import com.czl.shanshan.interfaces.common.util.RsBaseUtil;
 import com.czl.shanshan.interfaces.service.IRsFirstPageService;
@@ -30,12 +31,38 @@ public class RsFirstPageService implements IRsFirstPageService {
 	 */
 	@Override
 	public String listBanners(String params) {
-		List<BannerEntity> banners = firstPageService.listBanners(null);
 		String js;
-		try{
-			js = RsBaseUtil.responseDataSuccess(banners);
-		} catch(Exception e) {
-			js = RsBaseUtil.responseDataFailure(banners, e.getMessage());
+		List<BannerEntity> list = null;
+		try {
+			list = this.firstPageService.listBanners(null);
+			js = RsBaseUtil.responseDataSuccess(list);
+		} catch (Exception e) {
+			js = RsBaseUtil.responseDataFailure(list, e.getMessage());
+		}
+		return js;
+	}
+
+	@Override
+	public String getGoodsDetail(String id) {
+		System.out.println(id);
+		return null;
+	}
+	
+	/**
+	 * 通过商品种类查询商品列表
+	 * @author ZengliuChen
+	 * @date 2017年7月6日 09:27:03
+	 * @return
+	 */
+	@Override
+	public String listGoods(){
+		String js;
+		List<GoodsEntity> list = null;
+		try {
+			list = this.firstPageService.listGoods();
+			js = RsBaseUtil.responseDataSuccess(list);
+		} catch (Exception e) {
+			js = RsBaseUtil.responseDataFailure(list, e.getMessage());
 		}
 		return js;
 	}
