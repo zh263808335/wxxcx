@@ -3,6 +3,7 @@ package com.czl.shanshan.firstpage.service;
 import java.util.List;
 
 import com.czl.shanshan.firstpage.entity.BannerEntity;
+import com.czl.shanshan.firstpage.entity.GoodsEntity;
 
 /**
  * 首页service
@@ -17,5 +18,14 @@ public interface IFirstPageService {
 	 * @date 2017年7月5日 18:19:30
 	 * @return
 	 */
-	public List<BannerEntity> listBanners(BannerEntity bannerEntity);
+	List<BannerEntity> listBanners(BannerEntity bannerEntity);
+	
+	
+	/**
+	 * 通过商品种类查询商品列表
+	 * @author ZengliuChen
+	 * @date 2017年7月6日 09:27:03
+	 * @return
+	 */
+	List<GoodsEntity> listGoods();
 }
