@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.czl.shanshan.firstpage.dao.IFirstPageDao">
-	<resultMap id="bannerEntityResult" type="com.czl.shanshan.firstpage.entity.BannerEntity">
+	<!-- 查询横幅列表Map -->
+	<resultMap id="bannerEntityMap" type="com.czl.shanshan.firstpage.entity.BannerEntity">
 		<result column="id" property="id" jdbcType="INTEGER" />
 		<result column="dateAdd" property="dateAdd" jdbcType="TIMESTAMP" />
 		<result column="businessId" property="businessId" jdbcType="INTEGER" />
@@ -15,10 +16,41 @@
 		<result column="type" property="type" jdbcType="VARCHAR" />
 		<result column="userId" property="userId" jdbcType="INTEGER" />
 	</resultMap>
-	<select id="listBanners" resultMap="bannerEntityResult" 
+	<!-- 查询横幅列表 -->
+	<select id="listBanners" resultMap="bannerEntityMap" 
 		parameterType="com.czl.shanshan.firstpage.entity.BannerEntity">
 		SELECT t.id, t.dateAdd, t.businessId, t.linkUrl, t.paixu, t.picUrl,
-		t.remark, t.status, t.statusStr, t.title, t.type, t.userId,t.dateAdd
+			t.remark, t.status, t.statusStr, t.title, t.type, t.userId,t.dateAdd
 		FROM t_shan_banner t
+	</select>
+	
+	<resultMap id="listGoodsByCategoryIdMap" type="com.czl.shanshan.firstpage.entity.GoodsEntity">
+		<result column="id" property="id" jdbcType="INTEGER" />
+		<result column="characteristic" property="characteristic" jdbcType="VARCHAR" />
+		<result column="dateAdd" property="dateAdd" jdbcType="TIMESTAMP" />
+		<result column="logisticsId" property="logisticsId" jdbcType="INTEGER" />
+		<result column="minPrice" property="minPrice" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="numberFav" property="numberFav" jdbcType="INTEGER" />
+		<result column="numberGoodReputation" property="numberGoodReputation" jdbcType="INTEGER" />
+		<result column="numberOrders" property="numberOrders" jdbcType="INTEGER" />
+		<result column="originalPrice" property="originalPrice" jdbcType="INTEGER" />
+		<result column="paixu" property="paixu" jdbcType="INTEGER" />
+		<result column="pic" property="pic" jdbcType="VARCHAR" />
+		<result column="recommendStatus" property="recommendStatus" jdbcType="INTEGER" />
+		<result column="recommendStatusStr" property="recommendStatusStr" jdbcType="VARCHAR" />
+		<result column="shopId" property="shopId" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="statusStr" property="statusStr" jdbcType="VARCHAR" />
+		<result column="stores" property="stores" jdbcType="INTEGER" />
+		<result column="userId" property="userId" jdbcType="INTEGER" />
+		<result column="views" property="views" jdbcType="INTEGER" />
+	</resultMap>
+	<select id="listGoods" resultMap="listGoodsByCategoryIdMap" parameterType="java.lang.Long">
+		select id,characteristic,dateAdd,logisticsId,minPrice,
+			name,numberFav,numberGoodReputation,numberOrders,originalPrice,
+			paixu,pic,recommendStatus,recommendStatusStr,shopId,
+			status,statusStr,stores,userId,views
+		from t_shan_goods t
 	</select>
 </mapper>
