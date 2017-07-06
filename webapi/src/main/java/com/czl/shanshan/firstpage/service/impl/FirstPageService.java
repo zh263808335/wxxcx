@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.czl.shanshan.firstpage.dao.IFirstPageDao;
 import com.czl.shanshan.firstpage.entity.BannerEntity;
+import com.czl.shanshan.firstpage.entity.GoodsEntity;
 import com.czl.shanshan.firstpage.service.IFirstPageService;
 
 /**
@@ -32,6 +33,20 @@ public class FirstPageService implements IFirstPageService {
 	@Override
 	public List<BannerEntity> listBanners(BannerEntity bannerEntity) {
 		List<BannerEntity> list = this.firstPageDao.listBanners(bannerEntity);
+		return list;
+	}
+	
+	
+	/**
+	 * 通过商品种类查询商品列表
+	 * @author ZengliuChen
+	 * @param categoryId
+	 * @date 2017年7月6日 09:27:03
+	 * @return
+	 */
+	@Override
+	public List<GoodsEntity> listGoods(){
+		List<GoodsEntity> list = this.firstPageDao.listGoods();
 		return list;
 	}
 
