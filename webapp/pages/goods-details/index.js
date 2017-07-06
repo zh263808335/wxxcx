@@ -48,7 +48,8 @@ Page({
     })
 
     wx.request({
-      url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/detail',
+      //url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/detail',
+      url: app.globalData.server + 'firstPage/goodsDetail',
       data: {
         id: e.id
       },

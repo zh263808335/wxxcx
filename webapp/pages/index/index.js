@@ -74,12 +74,11 @@ Page({
     */
     wx.request({
       //url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/banner/list',
-      url: 'http://localhost:58305/api/test/get',
+      url: app.globalData.server + 'firstPage/listBanners',
       success: function(res) {
-        console.log(res);
-        // that.setData({
-        //   banners: res.data.data
-        // });
+        that.setData({
+          banners: res.data.data
+        });
       }
     })
     wx.request({
@@ -105,10 +104,8 @@ Page({
     console.log(categoryId)
     var that = this;
     wx.request({
-      url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/list',
-      data: {
-        categoryId: categoryId
-      },
+      //url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/list',
+      url: app.globalData.server + 'firstPage/shop/goods/list',
       success: function(res) {
         that.setData({
           goods:[],

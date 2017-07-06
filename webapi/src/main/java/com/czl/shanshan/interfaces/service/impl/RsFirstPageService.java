@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.czl.shanshan.firstpage.entity.BannerEntity;
 import com.czl.shanshan.firstpage.entity.GoodsEntity;
 import com.czl.shanshan.firstpage.service.IFirstPageService;
-import com.czl.shanshan.interfaces.common.util.RsBaseUtil;
+import com.czl.shanshan.interfaces.common.util.RestUtil;
 import com.czl.shanshan.interfaces.service.IRsFirstPageService;
 
 /**
@@ -35,9 +35,9 @@ public class RsFirstPageService implements IRsFirstPageService {
 		List<BannerEntity> list = null;
 		try {
 			list = this.firstPageService.listBanners(null);
-			js = RsBaseUtil.responseDataSuccess(list);
+			js = RestUtil.responseDataSuccess(list);
 		} catch (Exception e) {
-			js = RsBaseUtil.responseDataFailure(list, e.getMessage());
+			js = RestUtil.responseDataFailure(list, e.getMessage());
 		}
 		return js;
 	}
@@ -60,9 +60,9 @@ public class RsFirstPageService implements IRsFirstPageService {
 		List<GoodsEntity> list = null;
 		try {
 			list = this.firstPageService.listGoods();
-			js = RsBaseUtil.responseDataSuccess(list);
+			js = RestUtil.responseDataSuccess(list);
 		} catch (Exception e) {
-			js = RsBaseUtil.responseDataFailure(list, e.getMessage());
+			js = RestUtil.responseDataFailure(list, e.getMessage());
 		}
 		return js;
 	}
