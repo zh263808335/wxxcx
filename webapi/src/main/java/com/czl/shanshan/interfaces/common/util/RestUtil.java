@@ -8,7 +8,7 @@ import com.czl.shanshan.interfaces.entity.ResponseEntity;
  * @author ZengliuChen
  * @date 2017年7月5日 18:48:57
  */
-public class RsBaseUtil {
+public class RestUtil {
 
 	/**
 	 * 调用接口成功，返回参数
