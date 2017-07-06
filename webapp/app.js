@@ -11,7 +11,7 @@ App({
   },
   globalData:{
     userInfo:null,
-    server:"https://api.it120.cc/WeixinPlat/shanshan/",
+    server:"http://localhost:8080/weixinPlat/ws/shanshan/",
     subDomain:"mall"
   }
 })
