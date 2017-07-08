@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czl.shanshan.address.dao.IAddressDao">
+	<!-- 查询横幅列表Map -->
+	<resultMap id="addressEntityMap" type="com.czl.shanshan.address.entity.AddressesEntity">
+		    <result column="id" property="id" jdbcType="INTEGER" />
+		    <result column="linkMan" property="linkman" jdbcType="VARCHAR" />
+		    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+		    <result column="provinceId" property="provinceid" jdbcType="INTEGER" />
+		    <result column="cityId" property="cityid" jdbcType="INTEGER" />
+		    <result column="districtId" property="districtid" jdbcType="INTEGER" />
+		    <result column="address" property="address" jdbcType="VARCHAR" />
+		    <result column="code" property="code" jdbcType="VARCHAR" />
+		    <result column="isDefault" property="isdefault" jdbcType="SMALLINT" />
+		    <result column="dateAdd" property="dateadd" jdbcType="TIMESTAMP" />
+		    <result column="WxUserID" property="wxuserid" jdbcType="VARCHAR" />
+			</resultMap>
+	<!-- 查询横幅列表 -->
+	<select id="listAddress" resultMap="addressEntityMap" 
+		parameterType="java.lang.String">
+		SELECT t.id, t.dateAdd, t.linkMan, t.mobile, t.provinceId, t.cityId,
+			t.districtId, t.address, t.code, t.isDefault,t.WxUserID
+		FROM t_shan_address t where WxUserID=#{WxUserID,jdbcType=INTEGER}
+	</select>
+</mapper>

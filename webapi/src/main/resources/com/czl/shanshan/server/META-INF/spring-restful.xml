@@ -45,6 +45,29 @@
 			<ref bean="faultInterceptor" />
 		</jaxrs:outFaultInterceptors>
 	</jaxrs:server>
+	
+	
+	<!-- 邮寄地址接口 -->
+	<bean id="rsAddressService" class="com.czl.shanshan.interfaces.service.impl.RsAddressService">
+	</bean>
+	<jaxrs:server id="rsAddressServiceServer" address="/shanshan/address">
+		<jaxrs:serviceBeans>
+			<ref bean="rsAddressService"/>
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+	        <entry key="json" value="application/json" />
+	    </jaxrs:extensionMappings>
+	    <jaxrs:languageMappings>
+			<entry key="en" value="en-gb" />
+		</jaxrs:languageMappings>
+		<jaxrs:outInterceptors>
+			<ref bean="outInterceptor" />
+		</jaxrs:outInterceptors>
+		<jaxrs:outFaultInterceptors>
+			<ref bean="faultInterceptor" />
+		</jaxrs:outFaultInterceptors>
+	</jaxrs:server>
+	
 	 
 	<!-- 消息处理器 -->
 	<bean id="outInterceptor"
