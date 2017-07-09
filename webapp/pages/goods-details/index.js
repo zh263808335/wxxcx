@@ -49,7 +49,7 @@ Page({
 
     wx.request({
       //url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/detail',
-      url: app.globalData.server + 'firstPage/goodsDetail',
+      url: app.globalData.server + 'firstPage/shop/goods/detail',
       data: {
         id: e.id
       },
