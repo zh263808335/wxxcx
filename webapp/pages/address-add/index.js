@@ -86,7 +86,8 @@ Page({
       apiAddid = 0;
     }
     wx.request({
-      url: 'https://api.it120.cc/' + app.globalData.subDomain + '/user/shipping-address/' + apiAddoRuPDATE,
+      url: app.globalData.server + 'address/addAddress',
+      method: "POST",  
       data: {
         token: app.globalData.token,
         id: apiAddid,
@@ -97,9 +98,11 @@ Page({
         address:address,
         mobile:mobile,
         code:code,
-        isDefault:'true'
+        isDefault:1,
+        WxUserID:"101"
       },
       success: function(res) {
+        console.log(res)
         if (res.data.code != 0) {
           // 登录错误 
           wx.hideLoading();
