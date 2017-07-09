@@ -31,5 +31,20 @@ public class RsAddressService implements IRsAddressService {
 		}
 		return js;
 	}
-
+	
+	@Override
+	//publicc String addAddress(String param_linkMan,String param_mobile,Integer param_provinceId,Integer param_cityId,Integer param_districtId,String param_address,String param_code,String param_token)
+	public String addAddress(String record)
+	{
+		String js;
+		Integer result=0;
+		try {
+			result = this.addressService.addAddress(record);
+			js = RestUtil.responseDataSuccess(result);
+		} catch (Exception e) {
+			js = RestUtil.responseDataFailure(result, e.getMessage());
+		}
+		return js;
+		
+	}
 }

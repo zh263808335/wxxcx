@@ -22,4 +22,15 @@
 			t.districtId, t.address, t.code, t.isDefault,t.WxUserID
 		FROM t_shan_address t where WxUserID=#{WxUserID,jdbcType=INTEGER}
 	</select>
+	
+	  <insert id="addAddress" parameterType="com.czl.shanshan.address.entity.AddressesEntity" >
+    insert into t_shan_address (linkMan, mobile, 
+      provinceId, cityId, districtId, 
+      address, code, isDefault, 
+      dateAdd, WxUserID)
+    values ( #{linkman,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{provinceid,jdbcType=INTEGER}, #{cityid,jdbcType=INTEGER}, #{districtid,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{isdefault,jdbcType=SMALLINT}, 
+      #{dateadd,jdbcType=TIMESTAMP}, #{wxuserid,jdbcType=VARCHAR})
+  </insert>
 </mapper>
