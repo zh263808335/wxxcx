@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.czl.shanshan.firstpage.entity.BannerEntity;
+import com.czl.shanshan.firstpage.entity.GoodsDetailEntity;
 import com.czl.shanshan.firstpage.entity.GoodsEntity;
 import com.czl.shanshan.firstpage.service.IFirstPageService;
 import com.czl.shanshan.interfaces.common.util.RestUtil;
@@ -42,10 +43,24 @@ public class RsFirstPageService implements IRsFirstPageService {
 		return js;
 	}
 
+	/**
+	 * 查询商品详情
+	 * @author ZengliuChen
+	 * @date 2017年7月6日 15:14:43
+	 * @param id
+	 * @return
+	 */
 	@Override
-	public String getGoodsDetail(String id) {
-		System.out.println(id);
-		return null;
+	public String goodsDetail(Long id) {
+		GoodsDetailEntity entity = null;
+		String js;
+		try {
+			entity = firstPageService.getGoodsDetail(id);
+			js = RestUtil.responseDataSuccess(entity);
+		} catch (Exception e) {
+			js = RestUtil.responseDataFailure(entity, e.getMessage());
+		}
+		return js;
 	}
 	
 	/**

@@ -3,6 +3,7 @@ package com.czl.shanshan.firstpage.dao;
 import java.util.List;
 
 import com.czl.shanshan.firstpage.entity.BannerEntity;
+import com.czl.shanshan.firstpage.entity.GoodsDetailEntity;
 import com.czl.shanshan.firstpage.entity.GoodsEntity;
 
 /**
@@ -26,4 +27,13 @@ public interface IFirstPageDao {
 	 * @return
 	 */
 	List<GoodsEntity> listGoods();
+	
+	/**
+	 * 查询商品详情
+	 * @author ZengliuChen
+	 * @date 2017年7月6日 15:14:43
+	 * @param id
+	 * @return
+	 */
+	GoodsDetailEntity getGoodsDetail(Long id);
 }

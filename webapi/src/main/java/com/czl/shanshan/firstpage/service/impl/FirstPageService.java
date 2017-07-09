@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.czl.shanshan.firstpage.dao.IFirstPageDao;
 import com.czl.shanshan.firstpage.entity.BannerEntity;
+import com.czl.shanshan.firstpage.entity.GoodsDetailEntity;
 import com.czl.shanshan.firstpage.entity.GoodsEntity;
 import com.czl.shanshan.firstpage.service.IFirstPageService;
 
@@ -38,7 +39,7 @@ public class FirstPageService implements IFirstPageService {
 	
 	
 	/**
-	 * 通过商品种类查询商品列表
+	 * 查询商品列表
 	 * @author ZengliuChen
 	 * @param categoryId
 	 * @date 2017年7月6日 09:27:03
@@ -50,4 +51,16 @@ public class FirstPageService implements IFirstPageService {
 		return list;
 	}
 
+	/**
+	 * 查询商品详情
+	 * @author ZengliuChen
+	 * @date 2017年7月6日 15:14:43
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public GoodsDetailEntity getGoodsDetail(Long id){
+		GoodsDetailEntity entity = this.firstPageDao.getGoodsDetail(id);
+		return entity;
+	}
 }

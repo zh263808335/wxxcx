@@ -15,16 +15,29 @@ import javax.ws.rs.core.MediaType;
 @Produces({MediaType.APPLICATION_JSON,"text/html;charset=UTF-8"})
 public interface IRsFirstPageService {
 
+	/**
+	 * 查询横幅列表
+	 * @param bannerEntity
+	 * @date 2017年7月5日 18:19:30
+	 * @return
+	 */
 	@GET
     @Path("/listBanners")
 	String listBanners(String params);
 	
+	/**
+	 * 查询商品明细
+	 * @author ZengliuChen
+	 * @date 2017年7月6日 17:24:40
+	 * @param id
+	 * @return
+	 */
 	@GET
-    @Path("/getGoodsDetail")
-	String getGoodsDetail(@QueryParam("id") String id);
+    @Path("/shop/goods/detail")
+	String goodsDetail(@QueryParam("id") Long id);
 	
 	/**
-	 * 通过商品种类查询商品列表
+	 * 查询商品列表
 	 * @author ZengliuChen
 	 * @date 2017年7月6日 09:27:03
 	 * @return
