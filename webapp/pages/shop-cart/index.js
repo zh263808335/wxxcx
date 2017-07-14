@@ -317,7 +317,8 @@ Page({
           })
         } else {
           wx.request({
-            url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/price',
+            //url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/price',
+            url: app.globalData.server + 'firstPage/shop/goods/price',
             data: {
               goodsId: carShopBean.goodsId,
               propertyChildIds:carShopBean.propertyChildIds
