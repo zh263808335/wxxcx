@@ -1,10 +1,12 @@
 package com.czl.shanshan.firstpage.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.czl.shanshan.firstpage.entity.BannerEntity;
 import com.czl.shanshan.firstpage.entity.GoodsDetailEntity;
 import com.czl.shanshan.firstpage.entity.GoodsEntity;
+import com.czl.shanshan.firstpage.entity.PropertyChildDetail;
 
 /**
  * 首页dao
@@ -36,4 +38,11 @@ public interface IFirstPageDao {
 	 * @return
 	 */
 	GoodsDetailEntity getGoodsDetail(Long id);
+	
+	/**
+	 * 获得商品价钱
+	 * @param params
+	 * @return
+	 */
+	PropertyChildDetail getPrice(Map<String, Object> params);
 }
