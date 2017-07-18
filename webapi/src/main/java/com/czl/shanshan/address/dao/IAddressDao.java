@@ -10,4 +10,8 @@ public interface IAddressDao {
 	AddressesEntity defaultAddress(String wxid);
 	
 	int addAddress(AddressesEntity record);
+	
+	int updateAddress (AddressesEntity record);
+	
+	int updateDefaultAddress (AddressesEntity record);
 }

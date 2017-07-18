@@ -60,4 +60,35 @@ public class RsAddressService implements IRsAddressService {
 		return js;
 		
 	}
+	
+	
+	@Override
+	public String updateAddress(String record)
+	{
+		String js;
+		Integer result=0;
+		try {
+			result = this.addressService.updateAddress(record);
+			js = RestUtil.responseDataSuccess(result);
+		} catch (Exception e) {
+			js = RestUtil.responseDataFailure(result, e.getMessage());
+		}
+		return js;
+		
+	}
+	
+	@Override
+	public String updateDefaultAddress(String record)
+	{
+		String js;
+		Integer result=0;
+		try {
+			result = this.addressService.updateDefaultAddress(record);
+			js = RestUtil.responseDataSuccess(result);
+		} catch (Exception e) {
+			js = RestUtil.responseDataFailure(result, e.getMessage());
+		}
+		return js;
+		
+	}
 }

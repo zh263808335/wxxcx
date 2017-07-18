@@ -44,5 +44,22 @@ public class AddressService implements IAddressService {
 		return result;
 		
 	}
+	
+	@Override
+	public Integer updateAddress(String record)
+	{
+	AddressesEntity entity=JSON.parseObject(record, AddressesEntity.class);
+	Integer result=this.addressDao.updateAddress(entity);
+	return result;
+	}
+	
+	
+	@Override
+	public Integer updateDefaultAddress(String record)
+	{
+	AddressesEntity entity=JSON.parseObject(record, AddressesEntity.class);
+	Integer result=this.addressDao.updateDefaultAddress(entity);
+	return result;
+	}
 
 }

@@ -22,5 +22,10 @@ public interface IAddressService {
 	AddressesEntity defaultAddress(String wxid);
 	
 	Integer addAddress(String record);
-	//String addAddress(String param_linkMan,String param_mobile,Integer param_provinceId,Integer param_cityId,Integer param_districtId,String param_address,String param_code,String param_token)
+	
+	//修改地址信息
+	Integer updateAddress(String record);
+	
+	//修改默认地址信息
+	Integer updateDefaultAddress(String record);
 }

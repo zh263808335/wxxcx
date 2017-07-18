@@ -28,6 +28,14 @@ public interface IRsAddressService {
 	
 	@POST
     @Path("/addAddress")
-	//String addAddress(@FormParam("linkMan") String param_linkMan,@FormParam("mobile") String param_mobile,@FormParam("provinceId") Integer param_provinceId,@FormParam("cityId") Integer param_cityId,@FormParam("districtId") Integer param_districtId,@FormParam("address") String param_address,@FormParam("code") String param_code,@FormParam("token") String param_token);
 	String addAddress(String record);
+	
+	@POST
+    @Path("/updateAddress")
+	String updateAddress(String record);
+	
+	@POST
+	@Path("/updateDefaultAddress")
+	String updateDefaultAddress(String record);
+	
 }

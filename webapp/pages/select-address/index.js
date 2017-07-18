@@ -9,11 +9,13 @@ Page({
   selectTap: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.request({
-      url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/user/shipping-address/update',
+      url: app.globalData.server +'address/updateDefaultAddress',
+      method: "POST",  
       data: {
         token:app.globalData.token,
         id:id,
-        isDefault:'true'
+        WxUserID: '101',
+        isDefault: 1
       },
       success: (res) =>{
         wx.navigateBack({})
