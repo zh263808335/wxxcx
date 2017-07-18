@@ -51,11 +51,6 @@ Page({
             url: "/pages/index/index"
       });
   },
-  toAddress: function () {
-    wx.navigateTo({
-      url: "/pages/address-add/index"
-    })
-  },
 
   touchS:function(e){
     if(e.touches.length==1){
