@@ -114,8 +114,9 @@ Page({
   initShippingAddress: function () {
     var that = this;
     wx.request({
-      url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/user/shipping-address/default',
+      url: app.globalData.server +'address/defaultAddress',
       data: {
+        wxid:'101',
         token:app.globalData.token
       },
       success: (res) =>{

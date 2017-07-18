@@ -27,13 +27,17 @@ public class AddressService implements IAddressService {
 	}
 	
 	@Override
+	public AddressesEntity defaultAddress(String wxid) {
+		AddressesEntity entity = this.addressDao.defaultAddress(wxid);
+		return entity;
+	}
+	
+	
+	@Override
 	//public String addAddress(String param_linkMan,String param_mobile,Integer param_provinceId,Integer param_cityId,Integer param_districtId,String param_address,String param_code,String param_token)
 	//{
 		public Integer addAddress(String record)
 		{
-		
-		
-		
 		AddressesEntity entity=JSON.parseObject(record, AddressesEntity.class);
 		entity.setDateadd(new Date());
 		Integer result=this.addressDao.addAddress(entity);

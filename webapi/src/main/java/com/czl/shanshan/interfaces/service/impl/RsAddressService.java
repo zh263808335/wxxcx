@@ -33,6 +33,19 @@ public class RsAddressService implements IRsAddressService {
 	}
 	
 	@Override
+	public String defaultAddress(String wxid) {
+		String js;
+		AddressesEntity entity = null;
+		try {
+			entity = this.addressService.defaultAddress(wxid);
+			js = RestUtil.responseDataSuccess(entity);
+		} catch (Exception e) {
+			js = RestUtil.responseDataFailure(entity, e.getMessage());
+		}
+		return js;
+	}
+	
+	@Override
 	//publicc String addAddress(String param_linkMan,String param_mobile,Integer param_provinceId,Integer param_cityId,Integer param_districtId,String param_address,String param_code,String param_token)
 	public String addAddress(String record)
 	{

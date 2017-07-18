@@ -15,12 +15,19 @@
 		    <result column="dateAdd" property="dateadd" jdbcType="TIMESTAMP" />
 		    <result column="WxUserID" property="wxuserid" jdbcType="VARCHAR" />
 			</resultMap>
-	<!-- 查询横幅列表 -->
+			
 	<select id="listAddress" resultMap="addressEntityMap" 
 		parameterType="java.lang.String">
 		SELECT t.id, t.dateAdd, t.linkMan, t.mobile, t.provinceId, t.cityId,
 			t.districtId, t.address, t.code, t.isDefault,t.WxUserID
 		FROM t_shan_address t where WxUserID=#{WxUserID,jdbcType=INTEGER}
+	</select>
+	
+	<select id="defaultAddress" resultMap="addressEntityMap" 
+		parameterType="java.lang.String">
+		SELECT t.id, t.dateAdd, t.linkMan, t.mobile, t.provinceId, t.cityId,
+			t.districtId, t.address, t.code, t.isDefault,t.WxUserID
+		FROM t_shan_address t where WxUserID=#{WxUserID,jdbcType=INTEGER} and isDefault=1
 	</select>
 	
 	  <insert id="addAddress" parameterType="com.czl.shanshan.address.entity.AddressesEntity" >

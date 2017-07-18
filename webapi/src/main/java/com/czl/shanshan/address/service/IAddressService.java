@@ -14,6 +14,13 @@ public interface IAddressService {
 	 */
 	List<AddressesEntity> listAddress(String wxid);
 	
+	/***
+	 * 查用户默认邮寄地址列表
+	 * 
+	 * @return
+	 */
+	AddressesEntity defaultAddress(String wxid);
+	
 	Integer addAddress(String record);
 	//String addAddress(String param_linkMan,String param_mobile,Integer param_provinceId,Integer param_cityId,Integer param_districtId,String param_address,String param_code,String param_token)
 }

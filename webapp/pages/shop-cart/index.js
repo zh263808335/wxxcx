@@ -271,16 +271,17 @@ Page({
           return;
         }
         var carShopBean = shopList[i];
+        console.log(carShopBean);
         // 获取价格和库存
         if (!carShopBean.propertyChildIds || carShopBean.propertyChildIds == "") {
           wx.request({
-            url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/detail',
+            url: app.globalData.server + 'firstPage/shop/goods/detail',
             data: {
               id: carShopBean.goodsId
             },
             success: function(res) {
               doneNumber++;
-              if (res.data.data.properties) {
+              if (res.data.data.status) {
                 wx.showModal({
                   title: '提示',
                   content: res.data.data.basicInfo.name + ' 商品已失效，请重新购买',
