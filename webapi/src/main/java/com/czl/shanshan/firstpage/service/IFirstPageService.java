@@ -5,6 +5,7 @@ import java.util.List;
 import com.czl.shanshan.firstpage.entity.BannerEntity;
 import com.czl.shanshan.firstpage.entity.GoodsDetailEntity;
 import com.czl.shanshan.firstpage.entity.GoodsEntity;
+import com.czl.shanshan.firstpage.entity.PropertyChildDetail;
 
 /**
  * 首页service
@@ -38,4 +39,12 @@ public interface IFirstPageService {
 	 * @return
 	 */
 	GoodsDetailEntity getGoodsDetail(Long id);
+	
+	/**
+	 * 获得商品价钱
+	 * @param goodsId
+	 * @param propertyChildIds
+	 * @return
+	 */
+	PropertyChildDetail getPrice(Long goodsId, String propertyChildIds);
 }

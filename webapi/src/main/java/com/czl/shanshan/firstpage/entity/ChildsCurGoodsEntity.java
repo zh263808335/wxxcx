@@ -23,11 +23,6 @@ public class ChildsCurGoodsEntity extends BaseEntity {
 	
 	private Long goodsId;
 	
-	private Float price;
-	
-	private Integer stores;
-	
-	
 	public Date getDateAdd() {
 		return dateAdd;
 	}
@@ -76,20 +71,4 @@ public class ChildsCurGoodsEntity extends BaseEntity {
 		this.goodsId = goodsId;
 	}
 
-	public Float getPrice() {
-		return price;
-	}
-
-	public void setPrice(Float price) {
-		this.price = price;
-	}
-
-	public Integer getStores() {
-		return stores;
-	}
-
-	public void setStores(Integer stores) {
-		this.stores = stores;
-	}
-	
 }

@@ -45,5 +45,10 @@ public interface IRsFirstPageService {
 	@GET
     @Path("/shop/goods/list")
 	String listGoods();
+	
+	@GET
+    @Path("/shop/goods/price")
+	String getPrice(@QueryParam("goodsId") Long goodsId, 
+			@QueryParam("propertyChildIds") String propertyChildIds);
 
 }

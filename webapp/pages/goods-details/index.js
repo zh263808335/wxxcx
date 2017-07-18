@@ -144,7 +144,8 @@ Page({
     // 计算当前价格
     if (canSubmit) {
       wx.request({
-        url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/price',
+        //url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/price',
+        url: app.globalData.server + 'firstPage/shop/goods/price',
         data: {
           goodsId: that.data.goodsDetail.basicInfo.id,
           propertyChildIds:propertyChildIds

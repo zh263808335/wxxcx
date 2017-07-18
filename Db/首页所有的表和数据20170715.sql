@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-07-09 23:45:30
+Date: 2017-07-15 00:31:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -53,16 +53,16 @@ CREATE TABLE `t_shan_childscurgoods` (
   `paixu` smallint(6) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   `propertyId` int(11) DEFAULT NULL,
-  `goodsId` int(11) DEFAULT NULL,
-  `price` float DEFAULT NULL,
-  `stores` int(11) DEFAULT NULL
+  `goodsId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_shan_childscurgoods
 -- ----------------------------
-INSERT INTO `t_shan_childscurgoods` VALUES ('1', '2017-07-09 14:02:00', '珊珊锅巴180g', '2', null, '1', '1', '14', '9999');
-INSERT INTO `t_shan_childscurgoods` VALUES ('2', '2017-07-09 14:02:00', '珊珊锅巴100g', '1', '', '1', '1', '8', '9999');
+INSERT INTO `t_shan_childscurgoods` VALUES ('1', '2017-07-09 14:02:00', '珊珊锅巴180g', '2', null, '1', '1');
+INSERT INTO `t_shan_childscurgoods` VALUES ('2', '2017-07-09 14:02:00', '珊珊锅巴100g', '1', '', '1', '1');
+INSERT INTO `t_shan_childscurgoods` VALUES ('3', '2017-07-13 23:53:43', '精美包装', '1', null, '2', '1');
+INSERT INTO `t_shan_childscurgoods` VALUES ('4', '2017-07-13 23:54:16', '普通包装', '2', null, '2', '1');
 
 -- ----------------------------
 -- Table structure for `t_shan_goods`
@@ -146,3 +146,24 @@ CREATE TABLE `t_shan_goodsproperty` (
 -- Records of t_shan_goodsproperty
 -- ----------------------------
 INSERT INTO `t_shan_goodsproperty` VALUES ('1', '2017-07-09 13:56:28', '规格', '1', '1');
+INSERT INTO `t_shan_goodsproperty` VALUES ('2', '2017-07-13 23:53:14', '包装', '2', '1');
+
+-- ----------------------------
+-- Table structure for `t_shan_propertychilddetail`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_shan_propertychilddetail`;
+CREATE TABLE `t_shan_propertychilddetail` (
+  `goodsId` int(11) DEFAULT NULL,
+  `propertyChildIds` varchar(255) DEFAULT NULL,
+  `stores` int(11) DEFAULT NULL,
+  `price` float DEFAULT NULL,
+  `originalPrice` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_shan_propertychilddetail
+-- ----------------------------
+INSERT INTO `t_shan_propertychilddetail` VALUES ('1', '1:1,2:3,', '9999', '8', '10');
+INSERT INTO `t_shan_propertychilddetail` VALUES ('1', '1:1,2:4,', '9999', '10', '8');
+INSERT INTO `t_shan_propertychilddetail` VALUES ('1', '1:2,2:3,', '9999', '14', '16');
+INSERT INTO `t_shan_propertychilddetail` VALUES ('1', '1:2,2:4,', '9999', '16', '14');

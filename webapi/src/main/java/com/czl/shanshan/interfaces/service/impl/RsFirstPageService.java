@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.czl.shanshan.firstpage.entity.BannerEntity;
 import com.czl.shanshan.firstpage.entity.GoodsDetailEntity;
 import com.czl.shanshan.firstpage.entity.GoodsEntity;
+import com.czl.shanshan.firstpage.entity.PropertyChildDetail;
 import com.czl.shanshan.firstpage.service.IFirstPageService;
 import com.czl.shanshan.interfaces.common.util.RestUtil;
 import com.czl.shanshan.interfaces.service.IRsFirstPageService;
@@ -78,6 +79,19 @@ public class RsFirstPageService implements IRsFirstPageService {
 			js = RestUtil.responseDataSuccess(list);
 		} catch (Exception e) {
 			js = RestUtil.responseDataFailure(list, e.getMessage());
+		}
+		return js;
+	}
+	
+	@Override
+	public String getPrice(Long goodsId, String propertyChildIds){
+		String js = null;
+		PropertyChildDetail dtl = null;
+		try {
+			dtl = this.firstPageService.getPrice(goodsId, propertyChildIds);
+			js = RestUtil.responseDataSuccess(dtl);
+		} catch (Exception e) {
+			js = RestUtil.responseDataFailure(dtl, e.getMessage());
 		}
 		return js;
 	}

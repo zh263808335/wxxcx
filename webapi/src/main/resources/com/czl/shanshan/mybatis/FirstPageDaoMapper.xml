@@ -83,8 +83,14 @@
 		<result column="propertyId" property="propertyId" jdbcType="INTEGER" />
 		<result column="remark" property="remark" jdbcType="VARCHAR" />
 		<result column="goodsId" property="goodsId" jdbcType="INTEGER" />
-		<result column="price" property="price" jdbcType="FLOAT" />
+	</resultMap>
+	
+	<resultMap id="propertyChildDetailMap" type="com.czl.shanshan.firstpage.entity.PropertyChildDetail">
+		<result column="goodsId" property="goodsId" jdbcType="INTEGER" />
+		<result column="propertyChildIds" property="propertyChildIds" jdbcType="VARCHAR" />
 		<result column="stores" property="stores" jdbcType="INTEGER" />
+		<result column="price" property="price" jdbcType="REAL" />
+		<result column="originalPrice" property="originalPrice" jdbcType="REAL" />
 	</resultMap>
 	
 	<!-- 查询横幅列表 -->
@@ -95,6 +101,7 @@
 		t.remark, t.status, t.statusStr, t.title, t.type, t.userId,t.dateAdd
 		FROM
 		t_shan_banner t
+		order by t.paixu
 	</select>
 
 	<!-- 查询商品列表 -->
@@ -104,6 +111,7 @@
 		paixu,pic,recommendStatus,recommendStatusStr,shopId,
 		status,statusStr,stores,userId,views
 		from t_shan_goods t
+		order by t.paixu		
 	</select>
 
 	<!-- 查询商品详情 -->
@@ -119,17 +127,24 @@
 		INNER JOIN t_shan_goodsdetail AS dt ON dt.goodsId = gd.id
 		WHERE
 		gd.id = #{id,jdbcType=INTEGER}
+		order by gd.paixu
 	</select>
 	
 	<!-- 查询商品属性列表 -->
 	<select id="listGoodsProperties" parameterType="java.lang.Long" resultMap="goodsPropertyMap">
 		SELECT id as id, id as propertyId,dateAdd,name,paixu,goodsId from t_shan_goodsproperty t 
-		where t.goodsId=#{goodsId,jdbcType=INTEGER}
+		where t.goodsId=#{goodsId,jdbcType=INTEGER} order by t.paixu
 	</select>
 	
-	<!--  -->
+	<!-- 查询属性细分类 -->
 	<select id="listChildsCurGoods" parameterType="java.lang.Long" resultMap="childsCurGoodsMap">
-		SELECT id,dateAdd,name,paixu,propertyId,remark,goodsId,price,stores FROM t_shan_ChildsCurGoods t 
-		where t.propertyId=#{propertyId,jdbcType=INTEGER}
+		SELECT id,dateAdd,name,paixu,propertyId,remark,goodsId FROM t_shan_ChildsCurGoods t 
+		where t.propertyId=#{propertyId,jdbcType=INTEGER} order by t.paixu
+	</select>
+	
+	<!-- 查询属性细分的价钱 -->
+	<select id="getPrice" parameterType="java.util.Map" resultMap="propertyChildDetailMap">
+		SELECT goodsId,propertyChildIds,stores,price,originalPrice from t_shan_propertyChildDetail t 
+		where t.goodsId=#{goodsId,jdbcType=INTEGER} and t.propertyChildIds=#{propertyChildIds,jdbcType=VARCHAR}
 	</select>
 </mapper>

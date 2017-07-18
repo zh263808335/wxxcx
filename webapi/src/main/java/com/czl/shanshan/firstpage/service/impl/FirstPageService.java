@@ -1,6 +1,8 @@
 package com.czl.shanshan.firstpage.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,7 @@ import com.czl.shanshan.firstpage.dao.IFirstPageDao;
 import com.czl.shanshan.firstpage.entity.BannerEntity;
 import com.czl.shanshan.firstpage.entity.GoodsDetailEntity;
 import com.czl.shanshan.firstpage.entity.GoodsEntity;
+import com.czl.shanshan.firstpage.entity.PropertyChildDetail;
 import com.czl.shanshan.firstpage.service.IFirstPageService;
 
 /**
@@ -61,6 +64,22 @@ public class FirstPageService implements IFirstPageService {
 	@Override
 	public GoodsDetailEntity getGoodsDetail(Long id){
 		GoodsDetailEntity entity = this.firstPageDao.getGoodsDetail(id);
+		return entity;
+	}
+	
+	
+	/**
+	 * 获得商品价钱
+	 * @param goodsId
+	 * @param propertyChildIds
+	 * @return
+	 */
+	@Override
+	public PropertyChildDetail getPrice(Long goodsId, String propertyChildIds){
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("goodsId", goodsId);
+		params.put("propertyChildIds", propertyChildIds);
+		PropertyChildDetail entity = this.firstPageDao.getPrice(params);
 		return entity;
 	}
 }
