@@ -44,11 +44,27 @@ public interface IRsFirstPageService {
 	 */
 	@GET
     @Path("/shop/goods/list")
-	String listGoods();
+	String listGoods(@QueryParam("categoryId") Long categoryId);
 	
+	
+	/**
+	 * 计算价钱
+	 * @param goodsId
+	 * @param propertyChildIds
+	 * @return
+	 */
 	@GET
     @Path("/shop/goods/price")
 	String getPrice(@QueryParam("goodsId") Long goodsId, 
 			@QueryParam("propertyChildIds") String propertyChildIds);
+	
+	/**
+	 * 查询商品种类列表
+	 * @return
+	 */
+	@GET
+    @Path("/shop/goods/listCategaries")
+	String listCategaries();
+	
 
 }
