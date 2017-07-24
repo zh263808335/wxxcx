@@ -21,6 +21,7 @@
 	<!-- 查询商品map -->
 	<resultMap id="goodsEntityMap" type="com.czl.shanshan.firstpage.entity.GoodsEntity">
 		<result column="id" property="id" jdbcType="INTEGER" />
+		<result column="categoryId" property="categoryId" jdbcType="INTEGER" />
 		<result column="characteristic" property="characteristic"
 			jdbcType="VARCHAR" />
 		<result column="dateAdd" property="dateAdd" jdbcType="TIMESTAMP" />
@@ -93,6 +94,21 @@
 		<result column="originalPrice" property="originalPrice" jdbcType="REAL" />
 	</resultMap>
 	
+	<!-- 商品种类 map -->	
+	<resultMap id="categoryEntityMap" type="com.czl.shanshan.firstpage.entity.CategoryEntity">
+		<result column="id" property="id" jdbcType="INTEGER" />
+		<result column="isUse" property="isUse" jdbcType="INTEGER" />
+		<result column="key" property="key" jdbcType="VARCHAR" />
+		<result column="level" property="level" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="paixu" property="paixu" jdbcType="INTEGER" />
+		<result column="pid" property="pid" jdbcType="INTEGER" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="userId" property="userId" jdbcType="INTEGER" />
+		<result column="dateAdd" property="dateAdd" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	
 	<!-- 查询横幅列表 -->
 	<select id="listBanners" resultMap="bannerEntityMap"
 		parameterType="com.czl.shanshan.firstpage.entity.BannerEntity">
@@ -105,12 +121,17 @@
 	</select>
 
 	<!-- 查询商品列表 -->
-	<select id="listGoods" resultMap="goodsEntityMap" parameterType="java.lang.Long">
-		select id,characteristic,dateAdd,logisticsId,minPrice,
+	<select id="listGoods" resultMap="goodsEntityMap" parameterType="java.util.Map">
+		select id,categoryId,characteristic,dateAdd,logisticsId,minPrice,
 		name,numberFav,numberGoodReputation,numberOrders,originalPrice,
 		paixu,pic,recommendStatus,recommendStatusStr,shopId,
 		status,statusStr,stores,userId,views
-		from t_shan_goods t
+		from t_shan_goods t 
+		<where>
+			<if test="categoryId != null">
+				t.categoryId=#{categoryId,jdbcType=INTEGER}
+			</if>			
+		</where>
 		order by t.paixu		
 	</select>
 
@@ -146,5 +167,10 @@
 	<select id="getPrice" parameterType="java.util.Map" resultMap="propertyChildDetailMap">
 		SELECT goodsId,propertyChildIds,stores,price,originalPrice from t_shan_propertyChildDetail t 
 		where t.goodsId=#{goodsId,jdbcType=INTEGER} and t.propertyChildIds=#{propertyChildIds,jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 查询商品种类 -->
+	<select id="listCategaries" resultMap="categoryEntityMap">
+		SELECT id,isUse,`key`,level,name,paixu,pid,type,userId,dateAdd from t_shan_category order by paixu
 	</select>
 </mapper>
