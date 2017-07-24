@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.czl.shanshan.firstpage.entity.BannerEntity;
+import com.czl.shanshan.firstpage.entity.CategoryEntity;
 import com.czl.shanshan.firstpage.entity.GoodsDetailEntity;
 import com.czl.shanshan.firstpage.entity.GoodsEntity;
 import com.czl.shanshan.firstpage.entity.PropertyChildDetail;
@@ -28,7 +29,7 @@ public interface IFirstPageDao {
 	 * @date 2017年7月6日 09:27:03
 	 * @return
 	 */
-	List<GoodsEntity> listGoods();
+	List<GoodsEntity> listGoods(Map<String, Object> params);
 	
 	/**
 	 * 查询商品详情
@@ -45,4 +46,10 @@ public interface IFirstPageDao {
 	 * @return
 	 */
 	PropertyChildDetail getPrice(Map<String, Object> params);
+	
+	/**
+	 * 查询商品种类
+	 * @return
+	 */
+	List<CategoryEntity> listCategaries();
 }
