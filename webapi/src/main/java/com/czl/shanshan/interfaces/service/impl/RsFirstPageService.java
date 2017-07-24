@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.czl.shanshan.firstpage.entity.BannerEntity;
+import com.czl.shanshan.firstpage.entity.CategoryEntity;
 import com.czl.shanshan.firstpage.entity.GoodsDetailEntity;
 import com.czl.shanshan.firstpage.entity.GoodsEntity;
 import com.czl.shanshan.firstpage.entity.PropertyChildDetail;
@@ -71,11 +72,11 @@ public class RsFirstPageService implements IRsFirstPageService {
 	 * @return
 	 */
 	@Override
-	public String listGoods(){
+	public String listGoods(Long categoryId){
 		String js;
 		List<GoodsEntity> list = null;
 		try {
-			list = this.firstPageService.listGoods();
+			list = this.firstPageService.listGoods(categoryId);
 			js = RestUtil.responseDataSuccess(list);
 		} catch (Exception e) {
 			js = RestUtil.responseDataFailure(list, e.getMessage());
@@ -83,6 +84,9 @@ public class RsFirstPageService implements IRsFirstPageService {
 		return js;
 	}
 	
+	/**
+	 * 计算价钱
+	 */
 	@Override
 	public String getPrice(Long goodsId, String propertyChildIds){
 		String js = null;
@@ -92,6 +96,22 @@ public class RsFirstPageService implements IRsFirstPageService {
 			js = RestUtil.responseDataSuccess(dtl);
 		} catch (Exception e) {
 			js = RestUtil.responseDataFailure(dtl, e.getMessage());
+		}
+		return js;
+	}
+	
+	/**
+	 * 查询商品种类
+	 * @return
+	 */
+	public String listCategaries(){
+		String js;
+		List<CategoryEntity> list = null;
+		try {
+			list = this.firstPageService.listCategaries();
+			js = RestUtil.responseDataSuccess(list);
+		} catch (Exception e) {
+			js = RestUtil.responseDataFailure(list, e.getMessage());
 		}
 		return js;
 	}
