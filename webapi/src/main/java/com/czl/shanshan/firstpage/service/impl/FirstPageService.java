@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.czl.shanshan.firstpage.dao.IFirstPageDao;
 import com.czl.shanshan.firstpage.entity.BannerEntity;
+import com.czl.shanshan.firstpage.entity.CategoryEntity;
 import com.czl.shanshan.firstpage.entity.GoodsDetailEntity;
 import com.czl.shanshan.firstpage.entity.GoodsEntity;
 import com.czl.shanshan.firstpage.entity.PropertyChildDetail;
@@ -49,8 +50,13 @@ public class FirstPageService implements IFirstPageService {
 	 * @return
 	 */
 	@Override
-	public List<GoodsEntity> listGoods(){
-		List<GoodsEntity> list = this.firstPageDao.listGoods();
+	public List<GoodsEntity> listGoods(Long categoryId){
+		if(categoryId == -1L){
+			categoryId = null;
+		}
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("categoryId", categoryId);
+		List<GoodsEntity> list = this.firstPageDao.listGoods(params);
 		return list;
 	}
 
@@ -81,5 +87,14 @@ public class FirstPageService implements IFirstPageService {
 		params.put("propertyChildIds", propertyChildIds);
 		PropertyChildDetail entity = this.firstPageDao.getPrice(params);
 		return entity;
+	}
+	
+	/**
+	 * 查询商品种类
+	 * @return
+	 */
+	@Override
+	public List<CategoryEntity> listCategaries(){
+		return firstPageDao.listCategaries();
 	}
 }

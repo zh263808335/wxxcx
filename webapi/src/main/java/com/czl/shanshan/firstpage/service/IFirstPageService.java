@@ -3,6 +3,7 @@ package com.czl.shanshan.firstpage.service;
 import java.util.List;
 
 import com.czl.shanshan.firstpage.entity.BannerEntity;
+import com.czl.shanshan.firstpage.entity.CategoryEntity;
 import com.czl.shanshan.firstpage.entity.GoodsDetailEntity;
 import com.czl.shanshan.firstpage.entity.GoodsEntity;
 import com.czl.shanshan.firstpage.entity.PropertyChildDetail;
@@ -29,7 +30,7 @@ public interface IFirstPageService {
 	 * @date 2017年7月6日 09:27:03
 	 * @return
 	 */
-	List<GoodsEntity> listGoods();
+	List<GoodsEntity> listGoods(Long categoryId);
 	
 	/**
 	 * 查询商品详情
@@ -47,4 +48,10 @@ public interface IFirstPageService {
 	 * @return
 	 */
 	PropertyChildDetail getPrice(Long goodsId, String propertyChildIds);
+	
+	/**
+	 * 查询商品种类
+	 * @return
+	 */
+	List<CategoryEntity> listCategaries();
 }
