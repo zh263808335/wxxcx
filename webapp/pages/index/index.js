@@ -82,7 +82,8 @@ Page({
       }
     })
     wx.request({
-      url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/category/all',
+      //url: 'https://api.it120.cc/' + app.globalData.subDomain + '/shop/goods/category/all',
+      url: app.globalData.server + 'firstPage/shop/goods/listCategaries',
       success: function(res) {
         var categories = [{id:0, name:"全部"}];
         for(var i=0;i<res.data.data.length;i++){
@@ -99,13 +100,16 @@ Page({
   },
   getGoodsList: function (categoryId) {
     if (categoryId == 0) {
-      categoryId = "";
+      categoryId = -1;
     }
     console.log(categoryId)
     var that = this;
     wx.request({
       //url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/shop/goods/list',
       url: app.globalData.server + 'firstPage/shop/goods/list',
+      data: {
+        categoryId: categoryId
+      },
       success: function(res) {
         that.setData({
           goods:[],
