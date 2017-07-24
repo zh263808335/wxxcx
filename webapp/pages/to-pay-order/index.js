@@ -38,7 +38,7 @@ Page({
       if (i > 0){
         goodsJsonStrTmp = ",";
       }
-      goodsJsonStrTmp += '{"goodsId":'+ carShopBean.goodsId +',"number":'+ carShopBean.number +',"propertyChildIds":"'+ carShopBean.propertyChildIds +'","logisticsType":'+ carShopBean.logisticsType +'}';
+      goodsJsonStrTmp += '{"goodsId":' + carShopBean.goodsId +',"number":'+ carShopBean.number +',"propertyChildIds":"'+ carShopBean.propertyChildIds +'","logisticsType":'+ carShopBean.logisticsType +'}';
       goodsJsonStr += goodsJsonStrTmp;
     }
     goodsJsonStr += "]";
@@ -55,9 +55,9 @@ Page({
     var that = this;
     var loginToken = app.globalData.token // 用户登录 token
     var remark = e.detail.value.remark; // 备注信息
-
+    var tempToken="101";
     var postData = {
-      token: loginToken,
+      token: tempToken,
       goodsJsonStr: that.data.goodsJsonStr,
       remark: remark
     };
@@ -72,24 +72,21 @@ Page({
         })
         return;
       }
-      postData.provinceId = that.data.curAddressData.provinceId;
-      postData.cityId = that.data.curAddressData.cityId;
+      postData.provinceId = that.data.curAddressData.provinceid;
+      postData.cityId = that.data.curAddressData.cityid;
       if (that.data.curAddressData.districtId) {
-        postData.districtId = that.data.curAddressData.districtId;
+        postData.districtId = that.data.curAddressData.districtid;
       }
       postData.address = that.data.curAddressData.address;
-      postData.linkMan = that.data.curAddressData.linkMan;
+      postData.linkMan = that.data.curAddressData.linkman;
       postData.mobile = that.data.curAddressData.mobile;
       postData.code = that.data.curAddressData.code;
     }
 
 
     wx.request({
-      url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/order/create',
+      url: app.globalData.server +'order/createOrder',
       method:'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
       data: postData, // 设置请求的 参数
       success: (res) =>{
         wx.hideLoading();

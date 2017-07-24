@@ -108,13 +108,13 @@ Page({
   },
   labelItemTap: function(e) {
     var that = this;
-    /*
+    /* */
     console.log(e)
     console.log(e.currentTarget.dataset.propertyid)
     console.log(e.currentTarget.dataset.propertyname)
     console.log(e.currentTarget.dataset.propertychildid)
     console.log(e.currentTarget.dataset.propertychildname)
-    */
+   
     // 取消该分类下的子栏目所有的选中状态
     var childs = that.data.goodsDetail.properties[e.currentTarget.dataset.propertyindex].childsCurGoods;
     for(var i = 0;i < childs.length;i++){

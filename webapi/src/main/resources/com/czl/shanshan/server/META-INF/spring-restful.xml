@@ -68,6 +68,27 @@
 		</jaxrs:outFaultInterceptors>
 	</jaxrs:server>
 	
+		<!-- 订单接口 -->
+	<bean id="rsOrderService" class="com.czl.shanshan.interfaces.service.impl.RsOrderService">
+	</bean>
+	<jaxrs:server id="rsOrderServiceServer" address="/shanshan/order">
+		<jaxrs:serviceBeans>
+			<ref bean="rsOrderService"/>
+		</jaxrs:serviceBeans>
+		<jaxrs:extensionMappings>
+	        <entry key="json" value="application/json" />
+	    </jaxrs:extensionMappings>
+	    <jaxrs:languageMappings>
+			<entry key="en" value="en-gb" />
+		</jaxrs:languageMappings>
+		<jaxrs:outInterceptors>
+			<ref bean="outInterceptor" />
+		</jaxrs:outInterceptors>
+		<jaxrs:outFaultInterceptors>
+			<ref bean="faultInterceptor" />
+		</jaxrs:outFaultInterceptors>
+	</jaxrs:server>
+	
 	 
 	<!-- 消息处理器 -->
 	<bean id="outInterceptor"
